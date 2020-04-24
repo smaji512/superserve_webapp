@@ -1,0 +1,7 @@
+---
+- name: Install Git on Both master and slave
+  apt:
+    name: git
+    state: present
+  
+

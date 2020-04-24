@@ -1,0 +1,41 @@
+--- 
+- name: Create the sonar user for running the SonarQube services
+  user:
+   name: sonar
+   comment: System user for running SonarQube
+
+- name: Download SonarQube
+  get_url:
+   url: "https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-6.7.3.zip"
+   dest: "/home/ubuntu/Downloads/sonarqube-6.7.3.zip"
+
+- name: Extract SonarQube
+  unarchive:
+   src: "/home/ubuntu/Downloads/sonarqube-6.7.3.zip"
+   dest: "/home/ubuntu/Downloads"
+   copy: no
+   owner: sonar
+
+#- name: Link this version of sonarqube as the server SonarQube version
+#  file:
+#   src: "/home/ubuntu/Downloads"
+#   dest: "/home/ubuntu/Downloads/sonarqube-6.7.3"
+#   state: link
+#   owner: sonar
+
+- name: Configure SonarQube to run as the sonar user
+  lineinfile:
+   path: "/home/ubuntu/Downloads/sonarqube-6.7.3/bin/linux-x86-64/sonar.sh"
+   regexp: "RUN_AS_USER=sonar"
+   insertafter: "#RUN_AS_USER="
+   line: "RUN_AS_USER=sonar"
+
+- name: Enable the SonarQube service
+  systemd:
+   state: started
+   enabled: yes
+   daemon_reload: yes
+   name: sonarqube
+
+
+

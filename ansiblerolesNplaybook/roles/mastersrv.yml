@@ -1,0 +1,29 @@
+--- #Master Play book to Install Nagios Jenkins Sonarqube Gradle Git and Docker
+- name: Install Jenkins Nagios Sonnarqube in Master Node
+  hosts: local
+  user: ubuntu
+  become: true
+  connection: ssh
+  roles:
+   - jenkins
+   - nagios
+#   - sonarqube
+   
+- name: Install Gradle in Slave machine
+  hosts: ansi_slave
+  user: ubuntu
+  become: true
+  connection: ssh
+  roles:
+   - ansible-role-gradle
+   
+
+- name: Install Docker on Both Master and Slave
+  hosts: all
+  user: ubuntu
+  become: true
+  connection: ssh
+  roles:
+   - ansible-role-docker  
+   - ansible-role-git
+

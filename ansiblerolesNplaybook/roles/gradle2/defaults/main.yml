@@ -1,0 +1,7 @@
+---
+
+sdkman_script_install_url: http://get.sdkman.io
+
+sdkman_folder: '/home/vagrant/.sdkman'
+
+gradle_version: 2.3

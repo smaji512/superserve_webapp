@@ -1,0 +1,39 @@
+---
+
+- import_tasks: install.yml
+  tags:
+    - nagios
+    - nagios_server
+    - nagios_server_install
+
+- import_tasks: config_nagios.yml
+  tags:
+    - nagios
+    - nagios_server
+    - nagios_server_config
+
+- import_tasks: config_nsca.yml
+  tags:
+    - nagios
+    - nagios_server
+    - nagios_server_config
+
+- import_tasks: config_cgi.yml
+  tags:
+    - nagios
+    - nagios_server
+    - nagios_server_config
+    - nagios_server_config_cgi
+
+- import_tasks: config_apache.yml
+  tags:
+    - nagios
+    - nagios_server
+    - nagios_server_config
+    - nagios_server_config_cgi
+    - nagios_server_config_apache
+
+#- name: Disable SELinux
+#  selinux:
+#    state: disabled
+
