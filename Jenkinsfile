@@ -66,8 +66,8 @@ pipeline {
 		
 		stage("Docker push") {
 				steps {
-					sh "docker login -u smaji512 -p Chints@07"
-					sh "docker push smaji512/superserve_webapp"
+					sh "sudo docker login -u smaji512 -p Chints@07"
+					sh "sudo docker push smaji512/superserve_webapp"
 			}
 		}
 		
