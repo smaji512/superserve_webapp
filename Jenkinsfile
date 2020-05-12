@@ -64,12 +64,12 @@ pipeline {
 			}
 		}
 		
-//		stage("Docker push") {
-//				steps {
-//					sh "docker login -u smaji512 -p Chints@07"
-//					sh "docker push smaji512/superserve_webapp"
-//			}
-//		}
+		stage("Docker push") {
+				steps {
+					sh "docker login -u smaji512 -p Chints@07"
+					sh "docker push smaji512/superserve_webapp"
+			}
+		}
 		
 		stage('clean up') {
 
